@@ -16,6 +16,7 @@ public class Customer extends GeneralInformation {
 	
 	//method to create new Customer object
 	static Customer addNewCustomer(){
+		
 		//Scanner to obtain customer information required for constructor 
 		Scanner userInput = new Scanner(System.in);
 		System.out.println("Please enter customer name");
@@ -28,6 +29,7 @@ public class Customer extends GeneralInformation {
 		String address = userInput.nextLine();
 		System.out.println("Please enter customer email address.");
 		String email = userInput.nextLine();
+		
 		//Constructor to create new customer object
 		Customer newCustomer = new Customer(name,contactNumber,location,address, email);					
 	return newCustomer;
@@ -35,6 +37,7 @@ public class Customer extends GeneralInformation {
 	
 	//method to compare customer information with restaurant information
 	static String compareCustomerDriversLocation(Customer newCustomer, ArrayList<Drivers> driverInfo){
+		
 		//initiate variables
 		int a=0;
 		int b=0;
@@ -42,10 +45,12 @@ public class Customer extends GeneralInformation {
 		String assignedDriver = "";
 		String customerLocation = newCustomer.location;
 		String driverLocation;
+		
 		//ArrayLists to be used to compare drivers
 		ArrayList<Drivers> driversMatchingLocation = new ArrayList<Drivers>();
 		ArrayList<Drivers> driversMatchingLocationCopy = new ArrayList<Drivers>();
-			//for loop and nested if statement to compare customer location and driver location
+			
+		//for loop and nested if statement to compare customer location and driver location
 			//adds driver information to ArrayList on positive match
 			for(a=0;a<driverInfo.size();a++) {
 				driverLocation = (driverInfo.get(a).location);

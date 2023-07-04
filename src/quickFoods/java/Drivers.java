@@ -27,6 +27,7 @@ public class Drivers{
 	//method to read driver information from .txt file.
 	static ArrayList<String> driversDetails(){
 		ArrayList<String> driversArrayList = new ArrayList<String>();
+		
 		//try catch block to read driver information
 		try {
 			File driversFile = new File ("drivers.txt");
@@ -48,11 +49,13 @@ public class Drivers{
 	static ArrayList<Drivers> addDrivers(){
 		ArrayList<String[]> driversArrayList = new ArrayList<String[]>();
 		ArrayList<Drivers> driverInfo = new ArrayList<Drivers>();
+		
 		//try catch block to obtain driver information
 		try {
 			File file = new File("drivers.txt");
 			Scanner scanner = new Scanner(file);
 			String driver="";
+			
 			//while loop to split driver information and add driver information to array.
 			while(scanner.hasNextLine()==true){
 				driver = scanner.nextLine();

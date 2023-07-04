@@ -3,8 +3,10 @@ package quickFoods.java;
 public class QuickFoods {
 	//main class
 	public static void main(String[] args) {
+		
 		//Display welcome message
 		System.out.println("Welcome to QuickFoods. ");
+		
 		//method to display menu on loop until user quits
 		GeneralMethodsAndOperations.menuLoop();			
 	}
