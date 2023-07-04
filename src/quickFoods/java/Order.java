@@ -7,6 +7,7 @@ import java.util.*;
 
 //Class for all order related constructors and methods
 public class Order {
+	
 	//attributes to be used in constructor
 	String mealName;
 	int mealAmount;
@@ -37,33 +38,44 @@ public class Order {
 	
 	//method to process new order
 	static void processNewOrder() {
+		
 		//constructor functions
 		Customer newCustomer;
 		Restaurant newRestaurant;
+		
 		//declare and initiate variables
 		String orderNumber;
 		String assignedDriver = "";
+		
 		//increase order number to be used on invoice and in invoice filename
 		orderNumber=increaseOrderCounter();
+		
 		//obtain driver information to create Drivers object from .txt file.
 		Drivers.driversDetails();
+		
 		//obtain customer information to create Customer object from user input
 		newCustomer = Customer.addNewCustomer();
+		
 		//obtain restaurant information to create REstaurant object from user input
 		newRestaurant = Restaurant.addNewRestaurant();
+		
 		//add all meals (single meal/multiple meals) to ArrayList
 		ArrayList<Order> allMealsOrdered = addNewOrder(); 
+		
 		//run method from Order class in order to convert all order data from ArrayList to formatted String element 
 		String orderDetailString = Order.completeOrderDataToString(allMealsOrdered);
+		
 		//add Driver object information to ArrayLIst
 		ArrayList<Drivers> infoDrivers = Drivers.addDrivers();
 		assignedDriver = Customer.compareCustomerDriversLocation(newCustomer, infoDrivers);
+		
 		//write all assigned information to invoice file
 		writeInvoice(orderNumber,newCustomer,newRestaurant,orderDetailString,assignedDriver );
 	}
 	
 	//method to add new order
 	static ArrayList<Order> addNewOrder() {
+		
 		//Declare and initiate variables and objects;
 		ArrayList<Order> allMealsOrdered = new ArrayList<Order>();
 		String anotherMeal = "y";
@@ -71,6 +83,7 @@ public class Order {
 		String mealSpecialInstructions = "";
 		int mealAmount = 0;
 		Double mealPrice = 0.0;
+			
 			//while loop to ask user if the want to add another meal to the customer order
 			while(anotherMeal.equals("y")) {
 					Scanner scanner = new Scanner(System.in);
@@ -82,8 +95,10 @@ public class Order {
 					mealPrice = Double.parseDouble(scanner.nextLine());
 					System.out.println("Please enter any special instructions regarding your meal: " + mealName);
 					mealSpecialInstructions = scanner.nextLine();
+					
 					//create new Order object
 					Order mealOrdered = new Order(mealName, mealAmount, mealPrice, mealSpecialInstructions); 
+					
 					//add order object to ArrayList	
 					allMealsOrdered.add(mealOrdered);
 					anotherMeal = addMoreMealsToOrder(scanner);
@@ -103,6 +118,7 @@ public class Order {
 	//method to write information from customer, restaurant, driver and order to invoice.txt file
 	static String writeInvoice(String orderNumber, Customer newCustomer, Restaurant newRestaurant, String orderDetailString,String assignedDriver){
 		File invoice = new File ("invoice" + orderNumber +".txt");
+		
 		try {
 			FileWriter writer = new FileWriter(invoice, true);
 			writer.write(
@@ -128,18 +144,22 @@ public class Order {
 	
 	//method to increase order counter 
 	static String increaseOrderCounter() {
+		
 		//declare local variables
 		String orderNumber = "";
 		int orderNumberInt = 0;
+		
 		//try catch to increase counter value in relevant file. 
 		try {
 			File file = new File ("orderCounter.txt");
 			Scanner scanner = new Scanner (file);
-				while (scanner.hasNextLine()){			
+				
+			while (scanner.hasNextLine()){			
 					orderNumber = scanner.nextLine(); 
 					orderNumberInt = Integer.parseInt(orderNumber);
 					orderNumberInt ++;
 				}			
+				
 				//overwrite existing counter value with incremented value
 				FileWriter writer = new FileWriter(file);
 				String orderNumberToString = Integer.toString(orderNumberInt);
