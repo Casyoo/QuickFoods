@@ -1,0 +1,20 @@
+Order number	:1
+Customer		:Piet
+Email			:Daarso
+Phone number	:01234567890
+Location		:Johannesburg
+
+You have ordered the following from Plek in Johannesburg:
+
+2 x Brood en melk @ R 30,00  
+
+Special instructions received:
+Net die gewone
+
+Total: R60,00
+
+Spike Fenton is nearest to the restaurant and will be delivering your order to you at: 
+
+Hierso
+
+If you need to contact the restaurant, their number is: 09876543210
